@@ -15,10 +15,6 @@ var app = angular
         templateUrl: 'views/browse.html',
         controller: 'TaskController'     
       })
-      .when('/post', {
-        templateUrl: 'views/post.html',
-        controller: 'TaskController'
-      })
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'AuthController'
@@ -27,8 +23,8 @@ var app = angular
         templateUrl: 'views/register.html',
         controller: 'AuthController'
       })
-      .when('/edit/:taskId', {
-        templateUrl: 'views/edit.html',
+      .when('/browse', {
+        templateUrl: 'views/browse.html',
         controller: 'TaskController'
       })
       .otherwise({
