@@ -5,7 +5,8 @@ var app = angular
     'ngAnimate',    
     'ngResource',
     'ngRoute',    
-    'firebase'
+    'firebase',
+    'toaster'
   ])
   .constant('FURL', 'https://testing-app123.firebaseio.com/')
   .config(function ($routeProvider) {
