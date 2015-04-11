@@ -12,5 +12,5 @@ app.controller('NavController', function($scope, $location, toaster, Auth) {
 		$location.path('/');
 
 	};
-
+	
 });
