@@ -3,6 +3,7 @@
 app.controller('TaskController', function($scope, $location, toaster, Task, Auth) {
 
 	$scope.createTask = function() {
+		console.log("this worked")
 		$scope.task.status = 'open';
 		$scope.task.gravatar = Auth.user.profile.gravatar;
 		$scope.task.name = Auth.user.profile.name;

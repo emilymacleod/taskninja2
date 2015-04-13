@@ -11,30 +11,32 @@ app.factory('Task', function(FURL, $firebase, Auth) {
 		getTask: function(taskId) {
 			return $firebase(ref.child('tasks').child(taskId));
 		},
-
+				
 		createTask: function(task) {
+			console.log("working")
 			task.datetime = Firebase.ServerValue.TIMESTAMP;
 			return tasks.$add(task);
 		},
 
 		editTask: function(task) {
-			var t = this.getTask(task.$id);
+			var t = this.getTask(task.$id);			
 			return t.$update({title: task.title, description: task.description, total: task.total});
 		},
+
 		cancelTask: function(taskId) {
 			var t = this.getTask(taskId);
 			return t.$update({status: "cancelled"});
 		},
 
-		isCreator: function(task) {
+		isCreator: function(task) {			
 			return (user && user.provider && user.uid === task.poster);
 		},
 
 		isOpen: function(task) {
 			return task.status === "open";
-		},
+		}
 	};
 
-	return Task; 
+	return Task;
 
 });
