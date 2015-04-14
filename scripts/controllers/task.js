@@ -2,8 +2,7 @@
 
 app.controller('TaskController', function($scope, $location, toaster, Task, Auth) {
 
-	$scope.createTask = function() {
-		console.log("this worked")
+	$scope.createTask = function() {	
 		$scope.task.status = 'open';
 		$scope.task.gravatar = Auth.user.profile.gravatar;
 		$scope.task.name = Auth.user.profile.name;
@@ -17,9 +16,9 @@ app.controller('TaskController', function($scope, $location, toaster, Task, Auth
 	};
 
 	$scope.editTask = function(task) {
-		Task.editTask(task).then(function() {
+		Task.editTask(task).then(function() {			
 			toaster.pop('success', "Task is updated.");
 		});
 	};
-
+	
 });

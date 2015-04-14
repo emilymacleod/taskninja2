@@ -29,6 +29,11 @@ var app = angular
         controller: 'AuthController'
       })
 
+      .when('/dashboard', {
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashboardController'
+      })
+
       .otherwise({
         redirectTo: '/'
       });
