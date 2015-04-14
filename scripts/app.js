@@ -2,19 +2,26 @@
 
 var app = angular
   .module('TaskNinjaApp', [
-    'ngAnimate',
+    'ngAnimate',    
     'ngResource',
-    'ngRoute',
+    'ngRoute',    
     'firebase',
     'toaster',
     'angularMoment'
   ])
   .constant('FURL', 'https://testing-app123.firebaseio.com/')
+  .run(function($rootScope, $location) {
+    $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
+      if (error === "AUTH_REQUIRED") {
+        $location.path("/login");
+      }
+    });
+  })  
   .config(function ($routeProvider) {
-    $routeProvider
+    $routeProvider      
       .when('/', {
         templateUrl: 'views/browse.html',
-        controller: 'BrowseController'
+        controller: 'BrowseController'     
       })
       .when('/browse/:taskId', {
         templateUrl: 'views/browse.html',
@@ -28,12 +35,15 @@ var app = angular
         templateUrl: 'views/login.html',
         controller: 'AuthController'
       })
-
       .when('/dashboard', {
         templateUrl: 'views/dashboard.html',
-        controller: 'DashboardController'
+        controller: 'DashboardController',
+        resolve: {
+          currentAuth: function(Auth) {
+            return Auth.requireAuth();
+          }
+        }
       })
-
       .otherwise({
         redirectTo: '/'
       });
