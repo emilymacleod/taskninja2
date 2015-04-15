@@ -62,7 +62,21 @@ app.factory('Offer', function(FURL, $firebase, $q, Auth, Task) {
 					return Task.createUserTasks(taskId);
 				});
 
-			}
+			},
+
+			notifyRunner: function(taskId, runnerId) {
+			Auth.getProfile(runnerId).$loaded().then(function(runner) {
+				var n = {
+					taskId: taskId,
+					email: runner.email,
+					name: runner.name
+				};
+
+				// Create Notification and Zapier will delete it after use.
+				var notifications = $firebase(ref.child('notifications')).$asArray();
+				return notifications.$add(n);	
+			});
+		}
 
 	};
 
