@@ -149,16 +149,16 @@
 								<div class="title" ng-hide="kudos && kudos.length > 0">
 									<span>NO KUDOS :(</span>
 									</div><br>
-									<div class="row" ng-repeat="kudo in kudos">
+									<div class="row" ng-repeat="ku in kudos">
 										<div class="col-md-1">
-											<img ng-src="{{kudo.gravatar}}" class="img-circle comment gravatar">
+											<img ng-src="{{kudo.gravatar}}" class="img-circle kudo gravatar">
 										</div>
 										<div class="col-md-11">
 											<div class="well well-sm cmt">
-												<span class="cmt-title">{{kudo.name}}:</span>
-												<span class="cmt-time pull-right"><span am-time-ago="{{kudo.datetime}}"></span></span><br>
+												<span class="kdo-title">{{ku.name}}:</span>
+												<span class="kdo-time pull-right"><span am-time-ago="{{kudo.datetime}}"></span></span><br>
 
-												<span>{{kudo.content}}</span>
+												<span>{{ku.content}}</span>
 
 											</div>
 										</div>
@@ -166,17 +166,17 @@
 
 									<div class="row" ng-show="isOpen(selectedTask)">
 										<div class="col-md-12">
-											<form ng-submit="addKudos()">
+											<form ng-submit="addKudo()">
 
 												<div class="input-group">
 													<div class="input-group-addon">
-														<img ng-src="{{user.profile.gravatar}}" class="img-circle kudos gravatar">
+														<img ng-src="{{user.profile.gravatar}}" class="img-circle kudo gravatar">
 													</div>
-													<input type="text" ng-model="content" cols="10" rows="3" class="form-control" placeholder="Kudos?" required><br>
+													<input type="text" ng-model="content2" cols="10" rows="3" class="form-control" placeholder="Kudos?" required><br>
 												</div>
 
 												<span class="pull-right">
-													<input type="submit" class="btn btn-info" value="Kudos">
+													<input type="submit" class="btn btn-info" value="Kudo">
 												</span>
 											</form>
 										</div>
