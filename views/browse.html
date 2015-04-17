@@ -143,7 +143,7 @@
 						<div class="panel panel-default">
 
 							<div class="panel-heading">
-								<h3 class="panel-title">Kudos</h3>
+								<h3 class="panel-title">Kudos ({{kudoScore}})</h3>
 							</div>
 							<div class="panel-body">
 								<div class="title" ng-hide="kudos && kudos.length > 0">
@@ -151,12 +151,12 @@
 									</div><br>
 									<div class="row" ng-repeat="ku in kudos">
 										<div class="col-md-1">
-											<img ng-src="{{kudo.gravatar}}" class="img-circle kudo gravatar">
+											<img ng-src="{{ku.gravatar}}" class="img-circle kudo gravatar">
 										</div>
 										<div class="col-md-11">
 											<div class="well well-sm cmt">
 												<span class="kdo-title">{{ku.name}}:</span>
-												<span class="kdo-time pull-right"><span am-time-ago="{{kudo.datetime}}"></span></span><br>
+												<span class="kdo-time pull-right"><span am-time-ago="{{ku.datetime}}"></span></span><br>
 
 												<span>{{ku.content}}</span>
 
@@ -172,7 +172,7 @@
 													<div class="input-group-addon">
 														<img ng-src="{{user.profile.gravatar}}" class="img-circle kudo gravatar">
 													</div>
-													<input type="text" ng-model="content2" cols="10" rows="3" class="form-control" placeholder="Kudos?" required><br>
+													<input type="text" ng-model="kudocontent" cols="10" rows="3" class="form-control" placeholder="Kudos?" required><br>
 												</div>
 
 												<span class="pull-right">

@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('BrowseController', function($scope, $routeParams, toaster, Task, Auth, Comment, Offer) {
+app.controller('BrowseController', function($scope, $routeParams, toaster, Task, Auth, Comment, Offer, Kudo) {
 
 	$scope.searchTask = '';
 	$scope.tasks = Task.all;
@@ -36,6 +36,11 @@ app.controller('BrowseController', function($scope, $routeParams, toaster, Task,
 
 		$scope.comments = Comment.comments(task.$id);
 
+		Kudo.kudos(task.$id).then(function(data) {
+			$scope.kudos = data;
+			$scope.kudoScore = data.length;
+		});
+
 		$scope.offers = Offer.offers(task.$id);
 
 		$scope.block = false;
@@ -59,6 +64,19 @@ app.controller('BrowseController', function($scope, $routeParams, toaster, Task,
 
 		Comment.addComment($scope.selectedTask.$id, comment).then(function() {
 			$scope.content = '';
+		});
+	};
+
+	$scope.addKudo = function() {
+		var kudo = {
+			content: $scope.kudocontent,
+			name: $scope.user.profile.name,
+			gravatar: $scope.user.profile.gravatar
+
+		};
+
+		Kudo.addKudo($scope.selectedTask.$id, kudo).then(function() {
+			$scope.kudocontent = '';
 		});
 	};
 
