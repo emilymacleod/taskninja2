@@ -43,7 +43,7 @@
 		<div class="col-md-6">
 
 			<div ng-show="listMode">
-				<img src="images/browse.jpg" class="img-responsive img-browse">
+				<img src="images/browse.png" class="img-responsive img-browse">
 			</div>
 
 			<div ng-show="!listMode">
@@ -137,6 +137,52 @@
 					</div>
 				</div>
 
+				<!--Kudos-->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-default">
+
+							<div class="panel-heading">
+								<h3 class="panel-title">Kudos</h3>
+							</div>
+							<div class="panel-body">
+								<div class="title" ng-hide="kudos && kudos.length > 0">
+									<span>NO KUDOS :(</span>
+									</div><br>
+									<div class="row" ng-repeat="kudo in kudos">
+										<div class="col-md-1">
+											<img ng-src="{{kudo.gravatar}}" class="img-circle comment gravatar">
+										</div>
+										<div class="col-md-11">
+											<div class="well well-sm cmt">
+												<span class="cmt-title">{{kudo.name}}:</span>
+												<span class="cmt-time pull-right"><span am-time-ago="{{kudo.datetime}}"></span></span><br>
+
+												<span>{{kudo.content}}</span>
+
+											</div>
+										</div>
+									</div><br>
+
+									<div class="row" ng-show="isOpen(selectedTask)">
+										<div class="col-md-12">
+											<form ng-submit="addKudos()">
+
+												<div class="input-group">
+													<div class="input-group-addon">
+														<img ng-src="{{user.profile.gravatar}}" class="img-circle kudos gravatar">
+													</div>
+													<input type="text" ng-model="content" cols="10" rows="3" class="form-control" placeholder="Kudos?" required><br>
+												</div>
+
+												<span class="pull-right">
+													<input type="submit" class="btn btn-info" value="Kudos">
+												</span>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
 				<!--Comments-->
 
 				<div class="row">
