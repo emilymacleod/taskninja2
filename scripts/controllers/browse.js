@@ -77,7 +77,11 @@ app.controller('BrowseController', function($scope, $routeParams, toaster, Task,
 
 		Kudo.addKudo($scope.selectedTask.$id, kudo).then(function() {
 			$scope.kudocontent = '';
+				$scope.kudoScore = $scope.kudos.length;
+
 		});
+	// var test = Kudo.addKudo($scope.selectedTask.$id, kudo);
+	// console.log(test);
 	};
 
 	$scope.makeOffer = function() {

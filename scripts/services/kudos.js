@@ -23,13 +23,18 @@ app.factory("Kudo", function(FURL, $firebase, $q) {
         },
 
         addKudo: function(taskId, kudo) {
-            var task_kudos = this.kudos(taskId);
-            kudo.datetime = Firebase.ServerValue.TIMESTAMP;
+            var defer = $q.defer();
+            this.kudos(taskId).then(function(task_kudos) {
+                kudo.datetime = Firebase.ServerValue.TIMESTAMP;
+                if(task_kudos) {
 
-            if(task_kudos) {
-                return task_kudos.$add(kudo);
+                    defer.resolve(task_kudos.$add(kudo));
+                }
 
-            }
+            });
+
+            return defer.promise;
+           
         }
 
     };
